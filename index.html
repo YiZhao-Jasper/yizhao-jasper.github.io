@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Yi Zhao</title>
+  <meta name="description" content="Yi Zhao — Incoming M.S. in Computer Vision student at Carnegie Mellon University Robotics Institute. Research on foundation models for robot perception and medical image analysis." />
+  <meta name="author" content="Yi Zhao" />
+  <meta property="og:title" content="Yi Zhao" />
+  <meta property="og:description" content="Incoming MSCV student at CMU Robotics Institute. Research on foundation models for robot perception and medical image analysis." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://yizhao-jasper.github.io/" />
+  <meta property="og:image" content="https://yizhao-jasper.github.io/assets/portrait.jpg" />
+  <link rel="icon" href="data:image/svg+xml,&lt;svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'&gt;&lt;rect width='100' height='100' rx='18' fill='%231d4ed8'/&gt;&lt;text x='50' y='68' font-size='52' font-family='Georgia,serif' fill='white' text-anchor='middle'&gt;Y&lt;/text&gt;&lt;/svg&gt;" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main>
+
+    <!-- ===================== Header / Bio ===================== -->
+    <header id="about">
+      <div class="header-grid">
+        <div class="header-text">
+          <h1>Yi Zhao</h1>
+          <p class="subtitle">Incoming M.S. in Computer Vision student · <a href="https://www.ri.cmu.edu/" target="_blank" rel="noopener">Robotics Institute, Carnegie Mellon University</a></p>
+          <nav class="links">
+            <a href="mailto:yizhaojasper@gmail.com">Email</a>
+            <span aria-hidden="true">·</span>
+            <a href="https://github.com/YiZhao-Jasper" target="_blank" rel="noopener">GitHub</a>
+            <span aria-hidden="true">·</span>
+            <a href="https://www.linkedin.com/in/yi-jasper-zhao" target="_blank" rel="noopener">LinkedIn</a>
+          </nav>
+          <div class="bio">
+            <p>
+              I am an incoming master's student in the <a href="https://www.ri.cmu.edu/education/academic-programs/master-of-science-computer-vision/" target="_blank" rel="noopener">M.S. in Computer Vision (MSCV)</a> program at the Carnegie Mellon University Robotics Institute, starting Fall 2026. I received my B.S. (Honours) in Data Science from Beijing Normal-Hong Kong Baptist University (BNBU) in June 2026.
+            </p>
+            <p>
+              I currently work as a research collaborator at the <a href="https://theairlab.org/" target="_blank" rel="noopener">AirLab</a>, CMU Robotics Institute, with <a href="https://shibowing.github.io/" target="_blank" rel="noopener">Shibo Zhao</a>, on foundation models for inertial perception — learning physically meaningful motion representations from raw IMU sequences, and building controllable generative models of inertial data to support robot state estimation.
+            </p>
+            <p>
+              Before moving into robotics, my research centered on medical image analysis: I developed segmentation-guided diffusion models for anatomy-preserving MRI generation (ICASSP 2026), deep-learning pipelines for material microstructure segmentation (AIPR 2025), and GAN-based super-resolution for diabetic retinopathy screening (ICDSE 2025).
+            </p>
+            <p class="interests">
+              <strong>Research interests:</strong> robot perception and state estimation, foundation models for sensing, generative models, medical image analysis.
+            </p>
+          </div>
+        </div>
+        <figure class="portrait">
+          <img src="assets/portrait.jpg" alt="Portrait of Yi Zhao at Stanford University" width="546" height="819" />
+          <figcaption>Stanford, CA</figcaption>
+        </figure>
+      </div>
+    </header>
+
+    <!-- ===================== News ===================== -->
+    <section id="news">
+      <h2>News</h2>
+      <ul class="news-list">
+        <li><span class="date">2026</span>Joined the AirLab at CMU Robotics Institute as a research collaborator, working with Shibo Zhao on foundation models for inertial perception.</li>
+        <li><span class="date">2026</span>Admitted to the M.S. in Computer Vision program at the CMU Robotics Institute (Fall 2026).</li>
+        <li><span class="date">2025</span>Paper on segmentation-guided diffusion for MRI generation accepted at <strong>ICASSP 2026</strong>.</li>
+        <li><span class="date">2025</span>Papers accepted at <strong>AIPR 2025</strong> (titanium alloy microstructure segmentation) and <strong>ICDSE 2025</strong> (retinal image super-resolution).</li>
+        <li><span class="date">2024</span>Won a Bronze Medal in a Kaggle Featured Competition.</li>
+      </ul>
+    </section>
+
+    <!-- ===================== Publications ===================== -->
+    <section id="publications">
+      <h2>Publications</h2>
+
+      <div class="pub">
+        <h3>Segmentation-Guided Mamba Dynamic Diffusion Model for Anatomy-Preserving MRI Generation</h3>
+        <p class="authors"><strong>Yi Zhao</strong>, Qirui Fan, Xiaohui Duan, Donglong Chen</p>
+        <p class="venue">IEEE ICASSP 2026</p>
+        <p class="pub-links"><a href="https://github.com/YiZhao-Jasper/SegMaDiff" target="_blank" rel="noopener">code</a></p>
+        <p class="tldr">SegMaDiff injects tumor segmentation masks at every denoising step of a Mamba-based dynamic diffusion model, achieving state-of-the-art FID on BraTS-2023/2024 while preserving anatomical structure, and enabling mask-only restoration of corrupted MRI slices.</p>
+      </div>
+
+      <div class="pub">
+        <h3>Automated Microstructure Segmentation in Titanium Alloys Using Deep Learning Techniques</h3>
+        <p class="authors">Ruilang Wang, <strong>Yi Zhao</strong>, Ziqi Ye, Bowen Liu, Yucheng Li, Donglong Chen</p>
+        <p class="venue">IEEE AIPR 2025</p>
+        <p class="tldr">A deep-learning pipeline (VGG U-Net and SegFormer) for TC4 titanium alloy metallographic images, reaching 90% pixel accuracy and 0.7 mIoU on 1024×1024 images with a customized IWMID + Otsu preprocessing workflow.</p>
+      </div>
+
+      <div class="pub">
+        <h3>Super-Resolution Image Generation for Diabetic Retinopathy Detection by SRGAN</h3>
+        <p class="authors"><strong>Yi Zhao</strong></p>
+        <p class="venue">ICDSE 2025</p>
+        <p class="tldr">An SRGAN pipeline with a VGG-19 perceptual module and two-stage adversarial training for fundus image super-resolution on the APTOS dataset, improving texture fidelity for downstream retinopathy screening.</p>
+      </div>
+    </section>
+
+    <!-- ===================== Experience ===================== -->
+    <section id="experience">
+      <h2>Experience</h2>
+
+      <div class="item">
+        <div class="item-head">
+          <h3>AirLab, Robotics Institute, Carnegie Mellon University</h3>
+          <span class="period">2026 – Present</span>
+        </div>
+        <p class="role">Research Collaborator · with <a href="https://shibowing.github.io/" target="_blank" rel="noopener">Shibo Zhao</a></p>
+        <p>Research on foundation models for inertial perception: learning 3-D motion representations from raw 6-axis IMU sequences across heterogeneous platforms (vehicles, quadrupeds, drones, humans), and controllable generative modeling of inertial time series for data-efficient robot state estimation.</p>
+      </div>
+
+      <div class="item">
+        <div class="item-head">
+          <h3>Beijing Normal-Hong Kong Baptist University</h3>
+          <span class="period">Mar 2026 – Jun 2026</span>
+        </div>
+        <p class="role">Undergraduate Research Assistant · Advisor: Prof. Donglong Chen</p>
+        <p>Continued research on medical image processing, extending segmentation-guided diffusion methods for anatomy-preserving MRI generation and restoration.</p>
+      </div>
+
+      <div class="item">
+        <div class="item-head">
+          <h3>Chinese Academy of Sciences, Suzhou</h3>
+          <span class="period">Jan 2025 – Feb 2025</span>
+        </div>
+        <p class="role">Deep Learning Engineer Intern</p>
+        <p>Built an SRGAN-based super-resolution pipeline for diabetic retinopathy fundus images on the APTOS dataset — preprocessing, architecture design, perceptual-loss optimization, and two-stage adversarial training; the work led to a paper accepted at ICDSE 2025.</p>
+      </div>
+
+      <div class="item">
+        <div class="item-head">
+          <h3>China United Network Communications (China Unicom)</h3>
+          <span class="period">Jun 2024 – Jul 2024</span>
+        </div>
+        <p class="role">Machine Learning Engineer Intern</p>
+        <p>Analyzed 10k+ user records and built PyTorch forecasting models for provincial mobile-data demand (96% accuracy), engineering temporal and geographic features to support promotion strategies.</p>
+      </div>
+    </section>
+
+    <!-- ===================== Education ===================== -->
+    <section id="education">
+      <h2>Education</h2>
+
+      <div class="item">
+        <div class="item-head">
+          <h3>Carnegie Mellon University</h3>
+          <span class="period">Fall 2026 –</span>
+        </div>
+        <p class="role">M.S. in Computer Vision, Robotics Institute (incoming)</p>
+      </div>
+
+      <div class="item">
+        <div class="item-head">
+          <h3>Beijing Normal-Hong Kong Baptist University (BNBU)</h3>
+          <span class="period">Sep 2022 – Jun 2026</span>
+        </div>
+        <p class="role">B.S. (Honours) in Data Science</p>
+        <p>Major GPA 3.88/4.0 · First-Class Scholarship (2024, 2025)</p>
+      </div>
+
+      <div class="item">
+        <div class="item-head">
+          <h3>University of California, Berkeley</h3>
+          <span class="period">Jul 2024 – Aug 2024</span>
+        </div>
+        <p class="role">Summer Session — Probability &amp; Statistics, Finance</p>
+      </div>
+    </section>
+
+    <!-- ===================== Projects ===================== -->
+    <section id="projects">
+      <h2>Selected Projects</h2>
+
+      <div class="item">
+        <div class="item-head">
+          <h3><a href="https://github.com/YiZhao-Jasper/BNBU-Academic-Service-Platform" target="_blank" rel="noopener">BNBU Academic Service Platform</a></h3>
+          <span class="period">2025</span>
+        </div>
+        <p>Full-stack AI academic assistant for BNBU students: FastAPI + React + Supabase pgvector + Qwen, with a citation-grounded RAG backend over 2,835+ course records and a multi-mode chat interface combining database search, AI Q&amp;A, and live web search.</p>
+      </div>
+    </section>
+
+    <footer>
+      <p>© 2026 Yi Zhao · Last updated July 2026</p>
+    </footer>
+
+  </main>
+</body>
+</html>
