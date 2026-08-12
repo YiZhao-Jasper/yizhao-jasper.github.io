@@ -1,21 +1,206 @@
 /* ============================================================
    Yi (Jasper) Zhao — personal academic homepage
-   White academic style, layered blue palette, IBM Plex family
+   Layered blue palette, IBM Plex family, light + dark themes
+   ------------------------------------------------------------
+   THEMING
+   Every colour is a token. Light values are the defaults on
+   :root; each token's dark counterpart is defined ONCE as a
+   --d-* token, then remapped in two places:
+     1. @media (prefers-color-scheme: dark) — follows the OS,
+        unless the visitor forced light with the toggle;
+     2. :root[data-theme="dark"]            — the toggle wins.
+   To change a colour, edit the value in ONE place: the light
+   value on :root, or the matching --d-* token.
    ============================================================ */
 
 :root {
+  /* ---- light palette (defaults) ---- */
+  --page-bg: #ffffff;
+  --wash: #eaf4fe;                    /* soft blue wash behind the header */
+  --wash-fade: rgba(234, 244, 254, 0);
+  --card-bg: #ffffff;
+  --logo-tile: #ffffff;               /* stays light in both themes: the seals are dark line art */
+
   --ink: #10233c;          /* dark navy body text */
-  --navy: #1e3a8a;
-  --accent: #1d4ed8;       /* primary blue */
+  --heading: #0c1e38;
+  --navy: #1e3a8a;         /* emphasis / <strong> */
+  --accent: #1d4ed8;       /* primary blue — links */
   --accent-hover: #1e3a8a;
   --sky: #0284c7;          /* sky blue — secondary text */
   --lake: #0e7490;         /* lake blue — tertiary text */
+  --pub-tldr: #1e40af;     /* publication abstracts */
+
   --sky-soft: #e8f4fd;
   --accent-soft: #eef4ff;
   --border-blue: #d6e6f7;
+  --dash-border: #c9e2f7;
+  --stem-color: #cbe3f9;   /* NB: not --stem — .timeline uses that for the stem WIDTH */
+  --dot-ring: #eaf4fe;
+  --pub-hover-border: #93c5fd;
+  --rule-end: #38bdf8;     /* end stop of the h2 underline + timeline dot */
+
+  --icon-bg-a: #eef4ff;
+  --icon-bg-b: #e3f3fd;
+  --icon-border: #c4dcf5;
+  --icon-hover-a: #1d4ed8;
+  --icon-hover-b: #0284c7;
+  --icon-hover-text: #ffffff;
+
+  --chip-a: #1d4ed8;       /* news date chip */
+  --chip-b: #0284c7;
+  --chip-text: #ffffff;
+  --venue-a: #0284c7;      /* publication venue chip */
+  --venue-b: #0e7490;
+  --venue-text: #ffffff;
+
+  --sel-bg: #1d4ed8;
+  --sel-fg: #ffffff;
+
+  --shadow-chip: rgba(2, 132, 199, 0.25);
+  --shadow-venue: rgba(14, 116, 144, 0.22);
+  --shadow-card: rgba(30, 58, 138, 0.05);
+  --shadow-card-hover: rgba(29, 78, 216, 0.13);
+  --shadow-logo: rgba(30, 58, 138, 0.08);
+  --shadow-icon-hover: rgba(29, 78, 216, 0.25);
+  --shadow-portrait: rgba(29, 78, 216, 0.22);
+
+  /* ---- dark counterparts (values live here only) ---- */
+  --d-page-bg: #0b1220;
+  --d-wash: #0f1c30;
+  --d-wash-fade: rgba(15, 28, 48, 0);
+  --d-card-bg: #101c2f;
+  --d-logo-tile: #eef3f9;
+
+  --d-ink: #d7e3f2;
+  --d-heading: #eef5fd;
+  --d-navy: #9dc2fb;
+  --d-accent: #6aa6fb;
+  --d-accent-hover: #a5c9ff;
+  --d-sky: #74c8f0;
+  --d-lake: #67d3e8;
+  --d-pub-tldr: #a9c9ff;
+
+  --d-sky-soft: #16283e;
+  --d-accent-soft: #16233a;
+  --d-border-blue: #22344e;
+  --d-dash-border: #1f3550;
+  --d-stem-color: #2b4160;
+  --d-dot-ring: #16263c;
+  --d-pub-hover-border: #3f6fa8;
+
+  --d-icon-bg-a: #16243c;
+  --d-icon-bg-b: #14293f;
+  --d-icon-border: #2b4160;
+  --d-icon-hover-a: #2563eb;
+  --d-icon-hover-b: #0284c7;
+
+  --d-chip-a: #2563eb;
+  --d-chip-b: #0369a1;
+  --d-chip-text: #f2f8ff;
+  --d-venue-a: #0369a1;
+  --d-venue-b: #155e75;
+  --d-venue-text: #f2f8ff;
+
+  --d-sel-bg: #2f5fb8;
+
+  --d-shadow-soft: rgba(0, 0, 0, 0.35);
+  --d-shadow-strong: rgba(0, 0, 0, 0.5);
+
   --serif: "IBM Plex Serif", Georgia, "Times New Roman", serif;
   --sans: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
   --mono: "IBM Plex Mono", "SF Mono", Menlo, monospace;
+
+  color-scheme: light;
+}
+
+/* --- 1. follow the OS, unless the visitor forced light --- */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --page-bg: var(--d-page-bg);
+    --wash: var(--d-wash);
+    --wash-fade: var(--d-wash-fade);
+    --card-bg: var(--d-card-bg);
+    --logo-tile: var(--d-logo-tile);
+    --ink: var(--d-ink);
+    --heading: var(--d-heading);
+    --navy: var(--d-navy);
+    --accent: var(--d-accent);
+    --accent-hover: var(--d-accent-hover);
+    --sky: var(--d-sky);
+    --lake: var(--d-lake);
+    --pub-tldr: var(--d-pub-tldr);
+    --sky-soft: var(--d-sky-soft);
+    --accent-soft: var(--d-accent-soft);
+    --border-blue: var(--d-border-blue);
+    --dash-border: var(--d-dash-border);
+    --stem-color: var(--d-stem-color);
+    --dot-ring: var(--d-dot-ring);
+    --pub-hover-border: var(--d-pub-hover-border);
+    --icon-bg-a: var(--d-icon-bg-a);
+    --icon-bg-b: var(--d-icon-bg-b);
+    --icon-border: var(--d-icon-border);
+    --icon-hover-a: var(--d-icon-hover-a);
+    --icon-hover-b: var(--d-icon-hover-b);
+    --chip-a: var(--d-chip-a);
+    --chip-b: var(--d-chip-b);
+    --chip-text: var(--d-chip-text);
+    --venue-a: var(--d-venue-a);
+    --venue-b: var(--d-venue-b);
+    --venue-text: var(--d-venue-text);
+    --sel-bg: var(--d-sel-bg);
+    --shadow-chip: var(--d-shadow-soft);
+    --shadow-venue: var(--d-shadow-soft);
+    --shadow-card: var(--d-shadow-soft);
+    --shadow-card-hover: var(--d-shadow-strong);
+    --shadow-logo: var(--d-shadow-soft);
+    --shadow-icon-hover: var(--d-shadow-soft);
+    --shadow-portrait: var(--d-shadow-strong);
+    color-scheme: dark;
+  }
+}
+
+/* --- 2. explicit toggle: must come last so it beats the media query --- */
+:root[data-theme="dark"] {
+  --page-bg: var(--d-page-bg);
+  --wash: var(--d-wash);
+  --wash-fade: var(--d-wash-fade);
+  --card-bg: var(--d-card-bg);
+  --logo-tile: var(--d-logo-tile);
+  --ink: var(--d-ink);
+  --heading: var(--d-heading);
+  --navy: var(--d-navy);
+  --accent: var(--d-accent);
+  --accent-hover: var(--d-accent-hover);
+  --sky: var(--d-sky);
+  --lake: var(--d-lake);
+  --pub-tldr: var(--d-pub-tldr);
+  --sky-soft: var(--d-sky-soft);
+  --accent-soft: var(--d-accent-soft);
+  --border-blue: var(--d-border-blue);
+  --dash-border: var(--d-dash-border);
+  --stem-color: var(--d-stem-color);
+  --dot-ring: var(--d-dot-ring);
+  --pub-hover-border: var(--d-pub-hover-border);
+  --icon-bg-a: var(--d-icon-bg-a);
+  --icon-bg-b: var(--d-icon-bg-b);
+  --icon-border: var(--d-icon-border);
+  --icon-hover-a: var(--d-icon-hover-a);
+  --icon-hover-b: var(--d-icon-hover-b);
+  --chip-a: var(--d-chip-a);
+  --chip-b: var(--d-chip-b);
+  --chip-text: var(--d-chip-text);
+  --venue-a: var(--d-venue-a);
+  --venue-b: var(--d-venue-b);
+  --venue-text: var(--d-venue-text);
+  --sel-bg: var(--d-sel-bg);
+  --shadow-chip: var(--d-shadow-soft);
+  --shadow-venue: var(--d-shadow-soft);
+  --shadow-card: var(--d-shadow-soft);
+  --shadow-card-hover: var(--d-shadow-strong);
+  --shadow-logo: var(--d-shadow-soft);
+  --shadow-icon-hover: var(--d-shadow-soft);
+  --shadow-portrait: var(--d-shadow-strong);
+  color-scheme: dark;
 }
 
 * { box-sizing: border-box; }
@@ -25,14 +210,15 @@ html { scroll-behavior: smooth; }
 body {
   margin: 0;
   background:
-    linear-gradient(180deg, #eaf4fe 0%, rgba(234, 244, 254, 0) 480px),
-    #ffffff;
+    linear-gradient(180deg, var(--wash) 0%, var(--wash-fade) 480px),
+    var(--page-bg);
   color: var(--ink);
   font-family: var(--sans);
   font-size: 17px;
   line-height: 1.7;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  transition: background-color 0.25s ease, color 0.25s ease;
 }
 
 /* brand bar across the very top */
@@ -44,8 +230,8 @@ body::before {
 }
 
 ::selection {
-  background: var(--accent);
-  color: #fff;
+  background: var(--sel-bg);
+  color: var(--sel-fg);
 }
 
 main {
@@ -66,6 +252,56 @@ a:hover {
   text-decoration-thickness: 1.5px;
 }
 
+/* ---------- theme toggle ----------
+   Fixed in the top-right corner. The icon shows the theme you
+   would switch TO: a moon while light, a sun while dark.
+   ---------------------------------------------------------- */
+
+.theme-toggle {
+  position: fixed;
+  top: 16px;
+  right: 18px;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  color: var(--accent);
+  background: linear-gradient(135deg, var(--icon-bg-a), var(--icon-bg-b));
+  border: 1px solid var(--icon-border);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.18s ease, border-color 0.18s ease,
+              color 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease;
+}
+.theme-toggle svg {
+  width: 20px;
+  height: 20px;
+}
+.theme-toggle:hover {
+  background: linear-gradient(135deg, var(--icon-hover-a), var(--icon-hover-b));
+  border-color: var(--icon-hover-a);
+  color: var(--icon-hover-text);
+  box-shadow: 0 4px 12px var(--shadow-icon-hover);
+  transform: translateY(-1px);
+}
+.theme-toggle:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* show the moon in light mode, the sun in dark mode */
+.theme-toggle .icon-sun { display: none; }
+.theme-toggle .icon-moon { display: block; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .theme-toggle .icon-sun { display: block; }
+  :root:not([data-theme="light"]) .theme-toggle .icon-moon { display: none; }
+}
+:root[data-theme="dark"] .theme-toggle .icon-sun { display: block; }
+:root[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
+
 /* ---------- header ---------- */
 
 .header-grid {
@@ -83,7 +319,7 @@ h1 {
   margin: 0 0 8px;
   letter-spacing: -0.015em;
   line-height: 1.12;
-  color: #0c1e38;
+  color: var(--heading);
 }
 h1 .alt-name {
   color: var(--sky);
@@ -111,8 +347,8 @@ h1 .alt-name {
   width: 42px;
   height: 42px;
   color: var(--accent);
-  background: linear-gradient(135deg, #eef4ff, #e3f3fd);
-  border: 1px solid #c4dcf5;
+  background: linear-gradient(135deg, var(--icon-bg-a), var(--icon-bg-b));
+  border: 1px solid var(--icon-border);
   border-radius: 50%;
   transition: all 0.18s ease;
 }
@@ -121,11 +357,11 @@ h1 .alt-name {
   height: 20px;
 }
 .links a:hover {
-  background: linear-gradient(135deg, var(--accent), var(--sky));
-  border-color: var(--accent);
-  color: #fff;
+  background: linear-gradient(135deg, var(--icon-hover-a), var(--icon-hover-b));
+  border-color: var(--icon-hover-a);
+  color: var(--icon-hover-text);
   text-decoration: none;
-  box-shadow: 0 4px 12px rgba(29, 78, 216, 0.25);
+  box-shadow: 0 4px 12px var(--shadow-icon-hover);
   transform: translateY(-1px);
 }
 
@@ -163,7 +399,7 @@ h1 .alt-name {
   padding: 4px;
   border-radius: 16px;
   background: linear-gradient(135deg, #1e3a8a, #1d4ed8 45%, #0ea5e9 80%, #67e8f9);
-  box-shadow: 0 6px 20px rgba(29, 78, 216, 0.22);
+  box-shadow: 0 6px 20px var(--shadow-portrait);
 }
 .portrait figcaption {
   text-align: center;
@@ -191,7 +427,7 @@ h2 {
   font-weight: 700;
   letter-spacing: -0.01em;
   margin: 0 0 24px;
-  color: #0c1e38;
+  color: var(--heading);
 }
 h2::after {
   content: "";
@@ -200,7 +436,7 @@ h2::after {
   height: 4px;
   margin-top: 8px;
   border-radius: 2px;
-  background: linear-gradient(90deg, var(--accent), #38bdf8);
+  background: linear-gradient(90deg, var(--accent), var(--rule-end));
 }
 
 /* ---------- news ---------- */
@@ -217,20 +453,20 @@ h2::after {
   padding: 10px 0;
 }
 .news-list li + li {
-  border-top: 1px dashed #c9e2f7;
+  border-top: 1px dashed var(--dash-border);
 }
 .news-list .date {
   flex: 0 0 92px;
   font-family: var(--mono);
   font-size: 0.82rem;
   font-weight: 500;
-  color: #fff;
-  background: linear-gradient(135deg, var(--accent), var(--sky));
+  color: var(--chip-text);
+  background: linear-gradient(135deg, var(--chip-a), var(--chip-b));
   border-radius: 7px;
   text-align: center;
   padding: 2.5px 4px;
   white-space: nowrap;
-  box-shadow: 0 2px 6px rgba(2, 132, 199, 0.25);
+  box-shadow: 0 2px 6px var(--shadow-chip);
 }
 .news-list .news-text {
   flex: 1;
@@ -252,10 +488,10 @@ h2::after {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #ffffff;
+  background: var(--logo-tile);
   border: 1px solid var(--border-blue);
   border-radius: 18px;
-  box-shadow: 0 3px 10px rgba(30, 58, 138, 0.08);
+  box-shadow: 0 3px 10px var(--shadow-logo);
 }
 .edu-logo img {
   max-width: 56px;
@@ -315,8 +551,8 @@ h2::after {
   height: var(--dot);
   margin-top: var(--line-gap);
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--accent), #38bdf8);
-  box-shadow: 0 0 0 3.5px #eaf4fe;
+  background: linear-gradient(135deg, var(--accent), var(--rule-end));
+  box-shadow: 0 0 0 3.5px var(--dot-ring);
   z-index: 1;
 }
 
@@ -326,7 +562,7 @@ h2::after {
   width: var(--stem);
   margin-top: calc(var(--dot) / -2);          /* pull up into current dot center */
   margin-bottom: calc(-1 * (var(--line-gap) + var(--dot) / 2)); /* reach next center */
-  background: #cbe3f9;
+  background: var(--stem-color);
   z-index: 0;
 }
 .timeline-item:last-child .timeline-stem {
@@ -345,7 +581,7 @@ h2::after {
   font-weight: 600;
   margin: 0;
   letter-spacing: -0.005em;
-  color: #0c1e38;
+  color: var(--heading);
 }
 .timeline-body .period {
   font-family: var(--mono);
@@ -386,7 +622,7 @@ h2::after {
   font-weight: 600;
   margin: 0;
   letter-spacing: -0.005em;
-  color: #0c1e38;
+  color: var(--heading);
 }
 .item .period {
   font-family: var(--mono);
@@ -414,16 +650,17 @@ h2::after {
 .pub {
   margin-bottom: 20px;
   padding: 18px 20px;
-  background: #ffffff;
+  background: var(--card-bg);
   border: 1px solid var(--border-blue);
   border-radius: 14px;
-  box-shadow: 0 2px 8px rgba(30, 58, 138, 0.05);
-  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+  box-shadow: 0 2px 8px var(--shadow-card);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease,
+              background-color 0.25s ease;
 }
 .pub:last-child { margin-bottom: 0; }
 .pub:hover {
-  border-color: #93c5fd;
-  box-shadow: 0 8px 22px rgba(29, 78, 216, 0.13);
+  border-color: var(--pub-hover-border);
+  box-shadow: 0 8px 22px var(--shadow-card-hover);
   transform: translateY(-2px);
 }
 
@@ -433,7 +670,7 @@ h2::after {
   font-weight: 600;
   margin: 0 0 6px;
   line-height: 1.45;
-  color: #0c1e38;
+  color: var(--heading);
 }
 .pub .authors {
   margin: 0 0 5px;
@@ -447,16 +684,16 @@ h2::after {
   font-size: 0.78rem;
   font-weight: 500;
   letter-spacing: 0.02em;
-  color: #fff;
-  background: linear-gradient(135deg, var(--sky), var(--lake));
+  color: var(--venue-text);
+  background: linear-gradient(135deg, var(--venue-a), var(--venue-b));
   border-radius: 6px;
   padding: 2px 10px;
-  box-shadow: 0 2px 5px rgba(14, 116, 144, 0.22);
+  box-shadow: 0 2px 5px var(--shadow-venue);
 }
 .pub .tldr {
   margin: 0;
   font-size: 0.98rem;
-  color: #1e40af; /* deep blue for publication abstracts */
+  color: var(--pub-tldr); /* deep blue for publication abstracts */
   line-height: 1.65;
 }
 
@@ -476,6 +713,11 @@ footer {
 
 @media (max-width: 720px) {
   main { padding: 36px 20px 32px; }
+
+  .theme-toggle {
+    top: 12px;
+    right: 12px;
+  }
 
   .header-grid {
     flex-direction: column-reverse;
@@ -504,5 +746,15 @@ footer {
 
   .timeline {
     --gap: 12px;
+  }
+}
+
+/* ---------- motion preferences ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
   }
 }

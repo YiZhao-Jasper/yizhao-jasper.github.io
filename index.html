@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="light dark" />
+  <meta name="theme-color" content="#ffffff" />
   <title>Yi (Jasper) Zhao</title>
   <meta name="description" content="Yi (Jasper) Zhao — M.S. in Computer Vision student at Carnegie Mellon University Robotics Institute. Research on foundation models for robot perception and medical image analysis." />
   <meta name="author" content="Yi Zhao" />
@@ -15,9 +17,34 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css?v=20260721d" />
+  <link rel="stylesheet" href="style.css?v=20260812a" />
+
+  <!-- Theme: default is the visitor's OS setting; the toggle overrides it and
+       is remembered in localStorage. This runs before first paint so a saved
+       choice never flashes the wrong colours. -->
+  <script>
+    (function () {
+      var root = document.documentElement;
+      var saved = null;
+      try { saved = localStorage.getItem('theme'); } catch (e) { /* storage blocked */ }
+      if (saved === 'dark' || saved === 'light') {
+        root.setAttribute('data-theme', saved);
+      }
+      var dark = saved ? saved === 'dark'
+                       : window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var meta = document.querySelector('meta[name="theme-color"]');
+      if (meta) meta.setAttribute('content', dark ? '#0b1220' : '#ffffff');
+    })();
+  </script>
+  <noscript><style>.theme-toggle { display: none; }</style></noscript>
 </head>
 <body>
+
+  <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Switch to dark theme" title="Switch to dark theme">
+    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.6A8.6 8.6 0 1 1 9.4 3.5a6.9 6.9 0 0 0 11.1 11.1z"/></svg>
+    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.2M12 19.2v2.2M4.2 12H2M22 12h-2.2M5.6 5.6l1.6 1.6M16.8 16.8l1.6 1.6M18.4 5.6l-1.6 1.6M7.2 16.8l-1.6 1.6"/></svg>
+  </button>
+
   <main>
 
     <!-- ===================== Header / Bio ===================== -->
@@ -197,5 +224,44 @@
     </footer>
 
   </main>
+
+  <script>
+    (function () {
+      var root = document.documentElement;
+      var btn = document.getElementById('theme-toggle');
+      var mql = window.matchMedia('(prefers-color-scheme: dark)');
+      var meta = document.querySelector('meta[name="theme-color"]');
+
+      // the theme actually in effect: an explicit choice, else the OS setting
+      function current() {
+        var forced = root.getAttribute('data-theme');
+        return forced === 'dark' || forced === 'light' ? forced
+                                                       : (mql.matches ? 'dark' : 'light');
+      }
+
+      function sync() {
+        var next = current() === 'dark' ? 'light' : 'dark';
+        btn.setAttribute('aria-label', 'Switch to ' + next + ' theme');
+        btn.setAttribute('title', 'Switch to ' + next + ' theme');
+        if (meta) meta.setAttribute('content', current() === 'dark' ? '#0b1220' : '#ffffff');
+      }
+
+      btn.addEventListener('click', function () {
+        var next = current() === 'dark' ? 'light' : 'dark';
+        root.setAttribute('data-theme', next);
+        try { localStorage.setItem('theme', next); } catch (e) { /* storage blocked */ }
+        sync();
+      });
+
+      // follow the OS if the visitor has not overridden it
+      if (mql.addEventListener) {
+        mql.addEventListener('change', sync);
+      } else if (mql.addListener) {
+        mql.addListener(sync); // Safari < 14
+      }
+
+      sync();
+    })();
+  </script>
 </body>
 </html>
