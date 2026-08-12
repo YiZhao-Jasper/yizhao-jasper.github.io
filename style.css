@@ -3,14 +3,15 @@
    Layered blue palette, IBM Plex family, light + dark themes
    ------------------------------------------------------------
    THEMING
+   The page is LIGHT by default for everyone — it deliberately
+   does not follow the visitor's OS setting. Dark is opt-in via
+   the toggle, which sets data-theme="dark" on <html>.
+
    Every colour is a token. Light values are the defaults on
    :root; each token's dark counterpart is defined ONCE as a
-   --d-* token, then remapped in two places:
-     1. @media (prefers-color-scheme: dark) — follows the OS,
-        unless the visitor forced light with the toggle;
-     2. :root[data-theme="dark"]            — the toggle wins.
-   To change a colour, edit the value in ONE place: the light
-   value on :root, or the matching --d-* token.
+   --d-* token and remapped in the single :root[data-theme="dark"]
+   block. To change a colour, edit the value in ONE place: the
+   light value on :root, or the matching --d-* token.
    ============================================================ */
 
 :root {
@@ -113,53 +114,7 @@
   color-scheme: light;
 }
 
-/* --- 1. follow the OS, unless the visitor forced light --- */
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --page-bg: var(--d-page-bg);
-    --wash: var(--d-wash);
-    --wash-fade: var(--d-wash-fade);
-    --card-bg: var(--d-card-bg);
-    --logo-tile: var(--d-logo-tile);
-    --ink: var(--d-ink);
-    --heading: var(--d-heading);
-    --navy: var(--d-navy);
-    --accent: var(--d-accent);
-    --accent-hover: var(--d-accent-hover);
-    --sky: var(--d-sky);
-    --lake: var(--d-lake);
-    --pub-tldr: var(--d-pub-tldr);
-    --sky-soft: var(--d-sky-soft);
-    --accent-soft: var(--d-accent-soft);
-    --border-blue: var(--d-border-blue);
-    --dash-border: var(--d-dash-border);
-    --stem-color: var(--d-stem-color);
-    --dot-ring: var(--d-dot-ring);
-    --pub-hover-border: var(--d-pub-hover-border);
-    --icon-bg-a: var(--d-icon-bg-a);
-    --icon-bg-b: var(--d-icon-bg-b);
-    --icon-border: var(--d-icon-border);
-    --icon-hover-a: var(--d-icon-hover-a);
-    --icon-hover-b: var(--d-icon-hover-b);
-    --chip-a: var(--d-chip-a);
-    --chip-b: var(--d-chip-b);
-    --chip-text: var(--d-chip-text);
-    --venue-a: var(--d-venue-a);
-    --venue-b: var(--d-venue-b);
-    --venue-text: var(--d-venue-text);
-    --sel-bg: var(--d-sel-bg);
-    --shadow-chip: var(--d-shadow-soft);
-    --shadow-venue: var(--d-shadow-soft);
-    --shadow-card: var(--d-shadow-soft);
-    --shadow-card-hover: var(--d-shadow-strong);
-    --shadow-logo: var(--d-shadow-soft);
-    --shadow-icon-hover: var(--d-shadow-soft);
-    --shadow-portrait: var(--d-shadow-strong);
-    color-scheme: dark;
-  }
-}
-
-/* --- 2. explicit toggle: must come last so it beats the media query --- */
+/* --- dark is opt-in: only the toggle sets this attribute --- */
 :root[data-theme="dark"] {
   --page-bg: var(--d-page-bg);
   --wash: var(--d-wash);
@@ -295,10 +250,6 @@ a:hover {
 /* show the moon in light mode, the sun in dark mode */
 .theme-toggle .icon-sun { display: none; }
 .theme-toggle .icon-moon { display: block; }
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .theme-toggle .icon-sun { display: block; }
-  :root:not([data-theme="light"]) .theme-toggle .icon-moon { display: none; }
-}
 :root[data-theme="dark"] .theme-toggle .icon-sun { display: block; }
 :root[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
 
