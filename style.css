@@ -656,12 +656,21 @@ h2::after {
 }
 .fun-facts li + li { margin-top: 20px; }
 .fun-facts p { margin: 0 0 12px; }
-.dog-photo {
-  width: 280px;
+.dog-photo,
+.certificate-photo {
   max-width: 100%;
   margin: 0;
 }
-.dog-photo img {
+.dog-photo { width: 280px; }
+.certificate-photo { width: 640px; }
+.certificate-photo a { display: block; }
+.certificate-photo a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+  border-radius: 12px;
+}
+.dog-photo img,
+.certificate-photo img {
   display: block;
   width: 100%;
   height: auto;
