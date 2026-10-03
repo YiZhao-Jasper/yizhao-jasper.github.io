@@ -648,6 +648,28 @@ h2::after {
   line-height: 1.65;
 }
 
+/* ---------- fun facts ---------- */
+
+.fun-facts {
+  margin: 0;
+  padding-left: 1.25em;
+}
+.fun-facts li + li { margin-top: 20px; }
+.fun-facts p { margin: 0 0 12px; }
+.dog-photo {
+  width: 280px;
+  max-width: 100%;
+  margin: 0;
+}
+.dog-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--border-blue);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px var(--shadow-card);
+}
+
 /* ---------- footer ---------- */
 
 footer {
