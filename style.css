@@ -648,6 +648,15 @@ h2::after {
   line-height: 1.65;
 }
 
+.pub .pub-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin: 12px 0 0;
+  font-size: 0.92rem;
+  font-weight: 500;
+}
+
 /* ---------- fun facts ---------- */
 
 .fun-facts {
