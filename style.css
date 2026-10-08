@@ -641,6 +641,20 @@ h2::after {
   padding: 2px 10px;
   box-shadow: 0 2px 5px var(--shadow-venue);
 }
+.pub .pub-award {
+  display: inline-block;
+  margin: 0 0 8px 6px;
+  font-size: 0.82rem;
+  color: var(--ink);
+}
+.pub .pub-award a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: var(--border-blue);
+  text-underline-offset: 3px;
+}
+.pub .pub-award a:hover { color: var(--accent); }
+
 .pub .tldr {
   margin: 0;
   font-size: 0.98rem;
