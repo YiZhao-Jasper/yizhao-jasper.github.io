@@ -628,7 +628,8 @@ h2::after {
   font-size: 0.98rem;
 }
 .pub .authors strong { color: var(--navy); }
-.pub .venue {
+.pub .venue,
+.pub .pub-award {
   display: inline-block;
   margin: 0 0 8px;
   font-family: var(--mono);
@@ -642,18 +643,14 @@ h2::after {
   box-shadow: 0 2px 5px var(--shadow-venue);
 }
 .pub .pub-award {
-  display: inline-block;
-  margin: 0 0 8px 6px;
-  font-size: 0.82rem;
-  color: var(--ink);
+  margin-left: 8px;
+  text-decoration: none;
+  white-space: nowrap;
 }
-.pub .pub-award a {
-  color: inherit;
-  text-decoration: underline;
-  text-decoration-color: var(--border-blue);
-  text-underline-offset: 3px;
+.pub .pub-award:hover {
+  color: var(--venue-text);
+  text-decoration: none;
 }
-.pub .pub-award a:hover { color: var(--accent); }
 
 .pub .tldr {
   margin: 0;
